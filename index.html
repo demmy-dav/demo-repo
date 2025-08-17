@@ -7,5 +7,30 @@
 </head>
 <body>
     <div>Hello, World!</div>
+
+    <h2>Book a Ride</h2>
+    <form id="ride-booking-form" style="max-width: 400px; margin-bottom: 2em;">
+        <label for="ride-date">Select Date:</label><br>
+        <input type="date" id="ride-date" name="ride-date" required><br><br>
+        <label for="ride-time">Select Time:</label><br>
+        <input type="time" id="ride-time" name="ride-time" required><br><br>
+        <button type="submit">Book Ride</button>
+    </form>
+    <div id="booking-result"></div>
+
+    <p>This is the feature that allows you as a user to pay for you rides</p>
+
+    <script>
+    document.getElementById('ride-booking-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const date = document.getElementById('ride-date').value;
+        const time = document.getElementById('ride-time').value;
+        if (date && time) {
+            document.getElementById('booking-result').innerHTML = `Ride booked for <strong>${date}</strong> at <strong>${time}</strong>.`;
+        } else {
+            document.getElementById('booking-result').innerHTML = 'Please select both date and time.';
+        }
+    });
+    </script>
 </body>
 </html>
